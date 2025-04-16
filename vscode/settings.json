@@ -1,30 +1,21 @@
 {
-  // editor settings 
   "editor.fontSize": 14,
-  
+  "editor.fontFamily": "FiraCode Nerd Font",
   "editor.lineNumbers": "relative",
-  "editor.snippetSuggestions": "top",
-
   "editor.insertSpaces": true,
   "editor.tabSize": 4,
-  
   "editor.cursorSurroundingLines": 8,
   "editor.cursorSurroundingLinesStyle": "default",
-  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.snippetSuggestions": "top",
   
-  // terminal settings
   "terminal.integrated.fontSize": 14,
 
-  // workbench settings
   "workbench.iconTheme": "vscode-icons",
   "workbench.colorTheme": "Tokyo Night Storm",
   
-  // vim settings
   "vim.leader": " ",
   "vim.highlightedyank.enable": true,
-
   "vim.normalModeKeyBindingsNonRecursive": [
-    // halfpage and center cursorj
     {
       "before": ["<C-d>"],
       "after": ["<C-d>", "z", "z"]
@@ -33,7 +24,6 @@
       "before": ["<C-u>"],
       "after": ["<C-u>", "z", "z"]
     },
-    // search and center cursor
     {
       "before": ["n"],
       "after": ["n", "z", "z", "z", "v"]
@@ -42,7 +32,6 @@
       "before": ["N"],
       "after": ["N", "z", "z", "z", "v"]
     }, 
-    // search for the next/previous error in the code 
     {
       "before": ["]", "d"],
       "commands":  ["editor.action.marker.nextInFiles"]
@@ -53,7 +42,6 @@
     }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
-    // move highlighted lines with J or K 
     {
       "before": ["J"],
       "commands": ["editor.action.moveLinesDownAction"]
