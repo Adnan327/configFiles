@@ -10,9 +10,9 @@
   
   "terminal.integrated.fontSize": 14,
 
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Tokyo Night Storm",
-  
+
   "vim.leader": " ",
   "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -50,5 +50,5 @@
       "before": ["K"],
       "commands": ["editor.action.moveLinesUpAction"]
     }
-  ]
+  ],
 }
