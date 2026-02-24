@@ -1,5 +1,5 @@
 {
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.fontFamily": "FiraCode Nerd Font",
   "editor.lineNumbers": "relative",
   "editor.insertSpaces": true,
@@ -9,12 +9,24 @@
   "editor.snippetSuggestions": "top",
   
   "terminal.integrated.fontSize": 14,
-
+  
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+
+  "chat.agent.enabled": false,
+
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1,
+  },
 
   "vim.leader": " ",
   "vim.highlightedyank.enable": true,
+  "vim.handleKeys": {
+    "<C-j>": false,
+    "<C-b>": false,
+    "<C-p>": false
+  },
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<C-d>"],
@@ -39,7 +51,19 @@
     {
       "before": ["[", "d"],
       "commands": ["editor.action.marker.prevInFiles"]
-    }
+    },
+    {
+      "before": ["<leader>", "y"],
+      "after": ["\"", "+", "y"]
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["editor.action.codeAction"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
+    },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
@@ -49,6 +73,13 @@
     {
       "before": ["K"],
       "commands": ["editor.action.moveLinesUpAction"]
+    },
+    {
+    "before": ["<leader>", "y"],
+    "after": ["\"", "+", "y"]
     }
   ],
+
+  "dart.flutterSdkPath": "C:\\Users\\Adnan\\flutter",
+  "dart.flutterHotReloadOnSave": "all"
 }

@@ -1,20 +1,5 @@
 [
   {
-    "key": "ctrl+j",
-    "command": "-extension.vim_ctrl+j",
-    "when": "editorTextFocus && vim.active && vim.use<C-j> && !inDebugRepl"
-  },
-  {
-    "key": "ctrl+b",
-    "command": "-extension.vim_ctrl+b",
-    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "-extension.vim_ctrl+p",
-    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
-  },
-  {
     "key": "ctrl+n",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetVisible"
@@ -23,5 +8,15 @@
     "key": "ctrl+p",
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.view.explorer",
+    "when": "!sideBarVisible"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarVisible"
   }
 ]
