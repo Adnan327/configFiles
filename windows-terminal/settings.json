@@ -39,20 +39,20 @@
             "keys": "ctrl+c"
         },
         {
-            "id": null,
-            "keys": "alt+right"
-        },
-        {
-            "id": null,
-            "keys": "alt+up"
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
         },
         {
             "id": "User.paste",
             "keys": "ctrl+v"
         },
         {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": null,
+            "keys": "alt+up"
+        },
+        {
+            "id": null,
+            "keys": "alt+right"
         },
         {
             "id": null,
@@ -150,14 +150,12 @@
             },
             {
                 "commandline": "C:\\WINDOWS\\system32\\wsl.exe --distribution-id {4a5fd33f-2a89-4c23-84e4-91b5571e799a}",
-                "cursorShape": "filledBox",
                 "guid": "{d3fae4b9-0cd8-4ce6-8145-817e5ec4872b}",
                 "hidden": false,
                 "icon": "C:\\WSL\\Ubuntu26\\shortcut.ico",
                 "name": "Ubuntu-26.04",
                 "pathTranslationStyle": "wsl",
-                "startingDirectory": "~",
-                "suppressApplicationTitle": true
+                "startingDirectory": "~"
             },
             {
                 "guid": "{0d58965a-9f73-5362-af10-3901ad137e4c}",
