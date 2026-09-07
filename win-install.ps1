@@ -1,3 +1,16 @@
+# If the script is running on an older PowerShell version, install PowerShell 7
+# and restart the script with the newer version
+$PwshMajorVersion = 7
+
+if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
+	winget install --id "Microsoft.PowerShell" --exact
+	# Start the script again in the new shell using the same file path
+	& "$env:ProgramFiles\PowerShell\$PwshMajorVersion\pwsh.exe" -File $PSCommandPath
+
+	exit
+}
+
+
 ############################
 ### Install applications ###
 ############################
@@ -9,7 +22,6 @@ $programs = @(
 	"Neovim.Neovim"               # neovim
 	"Microsoft.WindowsTerminal"   # windows terminal
 	"Microsoft.VisualStudioCode"  # vscode
-	"Microsoft.PowerShell"        # powershell
 )
 
 # Installs only programs with this exact ID
