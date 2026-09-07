@@ -3,6 +3,7 @@
 $PwshMajorVersion = 7
 
 if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
+	Write-Host "`nInstalling Microsoft PowerShell..." -ForegroundColor Cyan
 	winget install --id "Microsoft.PowerShell" --exact --accept-package-agreements --accept-source-agreements
 	# Start the script again in the new shell using the same file path
 	& "$env:ProgramFiles\PowerShell\$PwshMajorVersion\pwsh.exe" -File $PSCommandPath
@@ -14,6 +15,8 @@ if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
 ############################
 ### Install applications ###
 ############################
+
+Write-Host "`nInstalling applications..." -ForegroundColor Cyan
 
 $Programs = @(
 	"Git.Git"                     # git
@@ -34,6 +37,8 @@ foreach ($Program in $Programs) {
 ### Install modules ###
 #######################
 
+Write-Host "`nInstalling PowerShell modules..." -ForegroundColor Cyan
+
 $Modules = @(
 	"Terminal-Icons"
 	"Microsoft.WinGet.CommandNotFound"
@@ -53,6 +58,8 @@ foreach ($Module in $Modules) {
 
 # Path = link
 # Target = original directory/file
+
+Write-Host "`nCreating symbolic links..." -ForegroundColor Cyan
 
 $Paths = @(
 	# Pwsh profile
@@ -97,5 +104,5 @@ foreach ($Path in $Paths) {
 }
 
 
-Write-Host "Installation finished!"
+Write-Host "`nInstallation complete." -ForegroundColor Green
 
