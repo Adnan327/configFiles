@@ -39,16 +39,56 @@
             "keys": "ctrl+c"
         },
         {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": null,
+            "keys": "alt+right"
+        },
+        {
+            "id": null,
+            "keys": "alt+up"
         },
         {
             "id": "User.paste",
             "keys": "ctrl+v"
         },
         {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": null,
+            "keys": "alt+left"
+        },
+        {
+            "id": null,
+            "keys": "alt+down"
+        },
+        {
+            "id": "Terminal.MoveFocusLeft",
+            "keys": "alt+h"
+        },
+        {
+            "id": "Terminal.MoveFocusUp",
+            "keys": "alt+k"
+        },
+        {
+            "id": "Terminal.MoveFocusRight",
+            "keys": "alt+l"
+        },
+        {
+            "id": "Terminal.MoveFocusDown",
+            "keys": "alt+j"
+        },
+        {
             "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
+            "keys": "alt+d"
+        },
+        {
+            "id": "Terminal.ClosePane",
+            "keys": "alt+w"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+w"
         }
     ],
     "newTabMenu": 
