@@ -17,6 +17,7 @@ if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
 ############################
 
 Write-Host "`nInstalling applications..." -ForegroundColor Cyan
+$InstalledProgramsCounter = 0
 
 $Programs = @(
 	"Git.Git"                     # git
@@ -29,7 +30,15 @@ $Programs = @(
 
 # Installs only programs with this exact ID
 foreach ($Program in $Programs) {
-	winget install --id $Program --exact --accept-package-agreements --accept-source-agreements
+	winget list --id $Program --exact > $null
+	if ($LASTEXITCODE -ne 0) {
+		winget install --id $Program --exact --accept-package-agreements --accept-source-agreements
+		$InstalledProgramsCounter++
+	}
+}
+
+if ($InstalledProgramsCounter -eq 0) {
+	Write-Host "No applications installed."
 }
 
 
@@ -38,6 +47,7 @@ foreach ($Program in $Programs) {
 #######################
 
 Write-Host "`nInstalling PowerShell modules..." -ForegroundColor Cyan
+$InstalledModulesCounter = 0  # Counter for installed modules
 
 $Modules = @(
 	"Terminal-Icons"
@@ -48,7 +58,12 @@ $Modules = @(
 foreach ($Module in $Modules) {
 	if (-not (Get-Module -ListAvailable -Name $Module)) {
 		Install-PSResource -Name $Module -Scope CurrentUser -TrustRepository
+		$InstalledModulesCounter++
 	}
+}
+
+if ($InstalledModulesCounter -eq 0) {
+	Write-Host "No modules installed."
 }
 
 
