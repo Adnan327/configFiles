@@ -3,7 +3,7 @@
 $PwshMajorVersion = 7
 
 if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
-	winget install --id "Microsoft.PowerShell" --exact
+	winget install --id "Microsoft.PowerShell" --exact --accept-package-agreements --accept-source-agreements
 	# Start the script again in the new shell using the same file path
 	& "$env:ProgramFiles\PowerShell\$PwshMajorVersion\pwsh.exe" -File $PSCommandPath
 
