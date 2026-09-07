@@ -47,7 +47,7 @@ if ($InstalledProgramsCounter -eq 0) {
 #######################
 
 Write-Host "`nInstalling PowerShell modules..." -ForegroundColor Cyan
-$InstalledModulesCounter = 0  # Counter for installed modules
+$InstalledModulesCounter = 0
 
 $Modules = @(
 	"Terminal-Icons"
@@ -111,6 +111,7 @@ $Paths = @(
 		Path     = "$env:LOCALAPPDATA\nvim"
 		Target   = "$HOME\.dotfiles\nvim"
 	}
+	# Latexmk settings
 	@{
 		Path     = "$HOME\.latexmkrc"
 		Target   = "$HOME\.dotfiles\latexmkrc"
