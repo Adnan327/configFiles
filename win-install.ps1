@@ -15,7 +15,7 @@ if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
 ### Install applications ###
 ############################
 
-$programs = @(
+$Programs = @(
 	"Git.Git"                     # git
 	"JanDeDobbeleer.OhMyPosh"     # oh-my-posh
 	"Fastfetch-cli.Fastfetch"     # fastfetch
@@ -25,8 +25,8 @@ $programs = @(
 )
 
 # Installs only programs with this exact ID
-foreach ($program in $programs) {
-	winget install --id $program --exact
+foreach ($Program in $Programs) {
+	winget install --id $Program --exact
 }
 
 
@@ -34,15 +34,15 @@ foreach ($program in $programs) {
 ### Install modules ###
 #######################
 
-$modules = @(
+$Modules = @(
 	"Terminal-Icons"
 	"Microsoft.WinGet.CommandNotFound"
 )
 
 # Installs modules only for the current user
-foreach ($module in $modules) {
-	if (-not (Get-Module -ListAvailable -Name $module)) {
-		Install-PSResource -Name $module -Scope CurrentUser
+foreach ($Module in $Modules) {
+	if (-not (Get-Module -ListAvailable -Name $Module)) {
+		Install-PSResource -Name $Module -Scope CurrentUser
 	}
 }
 
@@ -54,7 +54,7 @@ foreach ($module in $modules) {
 # Path = link
 # Target = original directory/file
 
-$paths = @(
+$Paths = @(
 	# Pwsh profile
 	@{
 		Path     = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
@@ -92,8 +92,8 @@ $paths = @(
 	# TODO: add latexmkrc
 )
 
-foreach ($path in $paths) {
-	New-Item -ItemType SymbolicLink @path -Force # splatting
+foreach ($Path in $Paths) {
+	New-Item -ItemType SymbolicLink @Path -Force # splatting
 }
 
 
