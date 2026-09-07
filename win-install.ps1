@@ -111,7 +111,10 @@ $Paths = @(
 		Path     = "$env:LOCALAPPDATA\nvim"
 		Target   = "$HOME\.dotfiles\nvim"
 	}
-	# TODO: add latexmkrc
+	@{
+		Path     = "$HOME\.latexmkrc"
+		Target   = "$HOME\.dotfiles\latexmkrc"
+	}
 )
 
 foreach ($Path in $Paths) {
