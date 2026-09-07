@@ -26,7 +26,7 @@ $Programs = @(
 
 # Installs only programs with this exact ID
 foreach ($Program in $Programs) {
-	winget install --id $Program --exact
+	winget install --id $Program --exact --accept-package-agreements --accept-source-agreements
 }
 
 
@@ -42,7 +42,7 @@ $Modules = @(
 # Installs modules only for the current user
 foreach ($Module in $Modules) {
 	if (-not (Get-Module -ListAvailable -Name $Module)) {
-		Install-PSResource -Name $Module -Scope CurrentUser
+		Install-PSResource -Name $Module -Scope CurrentUser -TrustRepository
 	}
 }
 
