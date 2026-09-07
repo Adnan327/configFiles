@@ -61,6 +61,8 @@ fi
 
 # Install oh-my-zsh
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+	# RUNZSH=no = do not run zsh after installation
+	# CHSH=no do not change the default shell to zsh
 	RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
