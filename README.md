@@ -2,26 +2,58 @@
 
 Setup for:
 
-1. VSCode
+1. VS Code
 2. Windows Terminal
 3. Bash
 4. Zsh
-4. Neovim
-5. Git
-6. Latexmk
-7. Fastfetch
-8. Oh-my-posh
+5. Neovim
+6. Git
+7. Latexmk
+8. Fastfetch
+9. Oh My Posh
 
 
-## Symlinks
+## Installation
 
 **Windows**
 
-```powershell
-New-Item -ItemType SymbolicLink -Path <link> -Target <original>
+1. Install [FiraCode Nerd Font](https://www.nerdfonts.com/font-downloads)
+
+2. Install [Oh My Posh](https://ohmyposh.dev/)
+```PowerShell
+winget install JanDeDobbeleer.OhMyPosh --source winget
 ```
 
-**Linux**
+3. Clone the repository and change into it
+```PowerShell
+git clone https://github.com/adnanmemic/dev-config.git ~/.dev-config && Set-Location ~/.dev-config
+```
+
+4. Start the installation script
+```PowerShell
+.\win-install.ps1
+```
+
+
+**Linux / WSL**
+1. Install [FiraCode Nerd Font](https://www.nerdfonts.com/font-downloads)
+
+2. Install [Oh My Posh](https://ohmyposh.dev/)
 ```bash
-ln -s <original> <link>
+curl -s https://ohmyposh.dev/install.sh | bash -s
+```
+
+3. Install [Oh My Zsh](https://ohmyz.sh)
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+4. Clone the repository and change into it
+```bash
+git clone https://github.com/adnanmemic/dev-config.git ~/.dev-config && cd ~/.dev-config
+```
+
+5. Start the installation script
+```bash
+./lin-install
 ```
