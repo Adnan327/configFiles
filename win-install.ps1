@@ -1,44 +1,9 @@
-# If the script is running on an older PowerShell version, install PowerShell 7
-# and restart the script with the newer version
+# Require PowerShell 7 or newer
 $PwshMajorVersion = 7
 
 if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
-	Write-Host "`nInstalling Microsoft PowerShell..." -ForegroundColor Cyan
-	winget install --id "Microsoft.PowerShell" --exact --accept-package-agreements --accept-source-agreements
-	# Start the script again in the new shell using the same file path
-	& "$env:ProgramFiles\PowerShell\$PwshMajorVersion\pwsh.exe" -File $PSCommandPath
-
-	exit
-}
-
-
-############################
-### Install applications ###
-############################
-
-Write-Host "`nInstalling applications..." -ForegroundColor Cyan
-$InstalledProgramsCounter = 0
-
-$Programs = @(
-	"Git.Git"                     # git
-	"JanDeDobbeleer.OhMyPosh"     # oh-my-posh
-	"Fastfetch-cli.Fastfetch"     # fastfetch
-	"Neovim.Neovim"               # neovim
-	"Microsoft.WindowsTerminal"   # windows terminal
-	"Microsoft.VisualStudioCode"  # vscode
-)
-
-# Installs only programs with this exact ID
-foreach ($Program in $Programs) {
-	winget list --id $Program --exact > $null
-	if ($LASTEXITCODE -ne 0) {
-		winget install --id $Program --exact --accept-package-agreements --accept-source-agreements
-		$InstalledProgramsCounter++
-	}
-}
-
-if ($InstalledProgramsCounter -eq 0) {
-	Write-Host "No applications installed."
+	Write-Host "`nPowerShell 7 or newer is required to run this script." -ForegroundColor Red
+	exit 1
 }
 
 
@@ -80,45 +45,49 @@ $Paths = @(
 	# Pwsh profile
 	@{
 		Path     = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-		Target   = "$HOME\.dotfiles\powershell\Microsoft.PowerShell_profile.ps1"
+		Target   = "$PWD\powershell\Microsoft.PowerShell_profile.ps1"
 	}
 	# Windows terminal settings
 	@{
 		Path     = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-		Target   = "$HOME\.dotfiles\windows-terminal\settings.json"
+		Target   = "$PWD\windows-terminal\settings.json"
 	}
 	# VSCode keybindings and settings
 	@{
 		Path     = "$env:APPDATA\Code\User\keybindings.json"
-		Target   = "$HOME\.dotfiles\vscode\keybindings.json"
+		Target   = "$PWD\vscode\keybindings.json"
 	}
 	@{
 		Path     = "$env:APPDATA\Code\User\settings.json"
-		Target   = "$HOME\.dotfiles\vscode\settings.json"
+		Target   = "$PWD\vscode\settings.json"
 	}
 	# Oh my posh themes directory
 	@{
 		Path     = "$HOME\.omp-themes"
-		Target   = "$HOME\.dotfiles\omp-themes"
+		Target   = "$PWD\omp-themes"
 	}
 	# Fastfetch settings
 	@{
 		Path     = "$HOME\.config\fastfetch"
-		Target   = "$HOME\.dotfiles\fastfetch"
+		Target   = "$PWD\fastfetch"
 	}
 	# Neovim settings
 	@{
 		Path     = "$env:LOCALAPPDATA\nvim"
-		Target   = "$HOME\.dotfiles\nvim"
+		Target   = "$PWD\nvim"
 	}
 	# Latexmk settings
 	@{
 		Path     = "$HOME\.latexmkrc"
-		Target   = "$HOME\.dotfiles\latexmkrc"
+		Target   = "$PWD\latexmkrc"
 	}
 )
 
 foreach ($Path in $Paths) {
+	# Create parent directory if it doesn't exist
+	$ParentPath = Split-Path -Parent $Path["Path"]
+	New-Item -ItemType Directory -Path $ParentPath -Force > $null
+
 	New-Item -ItemType SymbolicLink @Path -Force # splatting
 }
 
