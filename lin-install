@@ -1,74 +1,11 @@
 #!/usr/bin/env bash
 
 
-# Check if sudo is installed
-if ! command -v sudo &> /dev/null; then
-	echo "Install sudo before running this script!"
-	exit 1
-fi
-
-
-############################
-### Install applications ###
-############################
-
-# Check if application is in not_apt array
-is_not_apt() {
-	local program="$1"
-
-	for x in "${not_apt[@]}"; do
-		[[ "$program" == "$x" ]] && return 0
-	done
-
-	return 1
-}
-
-programs=(
-	# dependencies
-	"unzip"
-	"curl"
-
-	# dev
-	"neovim"
-	"git"
-	"zsh"
-	"fastfetch"
-)
-
-# Applications that should not be installed with apt
-not_apt=(
-	"neovim"
-	"fastfetch"
-)
-
-# Update apt packages
-command -v apt &> /dev/null && sudo apt update
-
-for program in "${programs[@]}"; do
-	if command -v apt &> /dev/null; then
-		is_not_apt "$program" && continue
-		sudo apt install -y "$program"
-	elif command -v pacman &> /dev/null; then
-		# --needed = skip packages that are already up to date
-		sudo pacman -S --needed --noconfirm "$program"
-	fi
-done
-
-# Install oh-my-posh
-if ! command -v oh-my-posh &> /dev/null; then 
-	curl -s https://ohmyposh.dev/install.sh | bash -s 
-fi
-
-# Install oh-my-zsh
-if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
-	# RUNZSH=no = do not run zsh after installation
-	# CHSH=no do not change the default shell to zsh
-	RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
 ################
 ### Symlinks ###
 ################
+
+printf '\n\e[36mCreating symbolic links...\e[0m\n'
 
 # dotfiles
 files=(
@@ -93,13 +30,5 @@ ln -snfv "$PWD/nvim" "$HOME/.config/nvim"
 ln -snfv "$PWD/fastfetch" "$HOME/.config/fastfetch"
 
 
-# Print list of application that should be installed manually
-if command -v apt &> /dev/null; then
-	printf '\nThe following applications should be installed manually:\n'
-	for program in "${not_apt[@]}"; do
-		printf '\t- %s\n' "$program"
-	done
-fi
-
-printf '\n\e[32minstallation complete\e[0m\n'
+printf '\n\e[32mInstallation complete.\e[0m\n'
 
