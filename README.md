@@ -9,6 +9,9 @@ Setup for:
 4. Neovim
 5. Git
 6. Latexmk
+7. Fastfetch
+8. Oh-my-posh
+
 
 ## Symlinks
 
