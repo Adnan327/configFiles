@@ -42,6 +42,11 @@ if ($InstalledModulesCounter -eq 0) {
 Write-Host "`nCreating symbolic links..." -ForegroundColor Cyan
 
 $Paths = @(
+	# Gitconfig
+	@{
+		Path     = "$HOME\.gitconfig"
+		Target   = "$PWD\gitconfig"
+	}
 	# Pwsh profile
 	@{
 		Path     = "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
