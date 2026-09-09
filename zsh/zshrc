@@ -10,7 +10,6 @@ plugins=(
 )
 source "$ZSH/oh-my-zsh.sh"
 
-
 ###################
 ### Environment ###
 ###################
@@ -20,7 +19,6 @@ export SAVEHIST=5000
 export PAGER=less
 export EDITOR=nvim
 export VISUAL=nvim
-
 
 #############
 ### Paths ###
@@ -52,7 +50,6 @@ export PATH="$PATH:/usr/local/texlive/2026/bin/x86_64-linux"
 # Racket
 export PATH="$PATH:/usr/local/racket/bin"
 
-
 ###############
 ### Aliases ###
 ###############
@@ -62,7 +59,6 @@ alias ls='ls -p --color=auto'
 
 command -v batcat &> /dev/null && alias bat='batcat --pager=cat'
 
-
 ###########################
 ### Load external files ###
 ###########################
@@ -70,14 +66,12 @@ command -v batcat &> /dev/null && alias bat='batcat --pager=cat'
 # Load aliases
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
-
 ##################
 ### Oh my posh ###
 ##################
 
 theme='robbyrussell'
 eval "$(oh-my-posh init zsh --config "$HOME/.omp-themes/$theme.omp.json")"
-
 
 #################
 ### Fastfetch ###
