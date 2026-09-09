@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 ################
 ### Symlinks ###
 ################
@@ -17,11 +16,11 @@ files=(
 	omp-themes
 )
 
-for file in "${files[@]}"; do 
+for file in "${files[@]}"; do
 	ln -snfv "$PWD/$file" "$HOME/.${file##*/}"
 done
 
-mkdir -p "$HOME/.config"  # create .config if it doesn't exist
+mkdir -p "$HOME/.config" # create .config if it doesn't exist
 
 # Neovim
 ln -snfv "$PWD/nvim" "$HOME/.config/nvim"
@@ -29,6 +28,4 @@ ln -snfv "$PWD/nvim" "$HOME/.config/nvim"
 # Fastfetch
 ln -snfv "$PWD/fastfetch" "$HOME/.config/fastfetch"
 
-
 printf '\n\e[32mInstallation complete.\e[0m\n'
-
