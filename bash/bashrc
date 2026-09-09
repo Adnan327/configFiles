@@ -1,30 +1,28 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
 ###################
 ### Environment ###
 ###################
 
-export HISTSIZE=5000  # history size
+export HISTSIZE=5000 # history size
 export HISTFILESIZE=5000
 export HISTCONTROL=ignoreboth
 export PAGER=less
 export EDITOR=nvim
 export VISUAL=nvim
-export GREP_COLORS='ms=1;31'  # grep colors (red)
+export GREP_COLORS='ms=1;31' # grep colors (red)
 
 export GROFF_NO_SGR=1
 
 # Colored man pages
-export LESS_TERMCAP_mb=$'\e[1;31m'  # begin blinking (red)
-export LESS_TERMCAP_md=$'\e[1;31m'  # begin bold (headings/titles in red)
-export LESS_TERMCAP_me=$'\e[0m'  # end bold/blink
-export LESS_TERMCAP_se=$'\e[0m'  # end standout mode
-export LESS_TERMCAP_so=$'\e[01;33;44m'  # begin standout (status bar: yellow on blue)
-export LESS_TERMCAP_ue=$'\e[0m'  # end underline
-export LESS_TERMCAP_us=$'\e[01;32m'  # begin underline (green)
-
+export LESS_TERMCAP_mb=$'\e[1;31m'     # begin blinking (red)
+export LESS_TERMCAP_md=$'\e[1;31m'     # begin bold (headings/titles in red)
+export LESS_TERMCAP_me=$'\e[0m'        # end bold/blink
+export LESS_TERMCAP_se=$'\e[0m'        # end standout mode
+export LESS_TERMCAP_so=$'\e[01;33;44m' # begin standout (status bar: yellow on blue)
+export LESS_TERMCAP_ue=$'\e[0m'        # end underline
+export LESS_TERMCAP_us=$'\e[01;32m'    # begin underline (green)
 
 #############
 ### Paths ###
@@ -56,17 +54,15 @@ export PATH="$PATH:/usr/local/texlive/2026/bin/x86_64-linux"
 # Racket
 export PATH="$PATH:/usr/local/racket/bin"
 
-
 #####################
 ### Shell options ###
 #####################
 
-shopt -s histappend  # append to command history
-shopt -s cdspell  # correct spelling errors when using cd
-shopt -s checkwinsize  # update terminal dimensions after each command
-shopt -s dirspell  # correct directory spelling errors during completion (tab)
-shopt -s autocd  # change directory without using cd
-
+shopt -s histappend   # append to command history
+shopt -s cdspell      # correct spelling errors when using cd
+shopt -s checkwinsize # update terminal dimensions after each command
+shopt -s dirspell     # correct directory spelling errors during completion (tab)
+shopt -s autocd       # change directory without using cd
 
 ###############
 ### Aliases ###
@@ -75,8 +71,7 @@ shopt -s autocd  # change directory without using cd
 alias grep='grep --color=auto'
 alias ls='ls -p --color=auto'
 
-command -v batcat &> /dev/null && alias bat='batcat --pager=cat'
-
+command -v batcat &>/dev/null && alias bat='batcat --pager=cat'
 
 ##############
 ### Prompt ###
@@ -96,7 +91,6 @@ PS1+='\[\e[38;5;157m\]\w\[\e[0m\] '
 # Prompt character
 PS1+='\[\e[38;5;81m\]\$\[\e[0m\] '
 
-
 ###########################
 ### Load external files ###
 ###########################
@@ -111,7 +105,6 @@ elif [[ -f "/etc/bash_completion" ]]; then
 	source "/etc/bash_completion"
 fi
 
-
 ##################
 ### Oh my posh ###
 ##################
@@ -119,10 +112,8 @@ fi
 theme='robbyrussell'
 eval "$(oh-my-posh init bash --config "$HOME/.omp-themes/$theme.omp.json")"
 
-
 #################
 ### Fastfetch ###
 #################
 
 fastfetch
- 
