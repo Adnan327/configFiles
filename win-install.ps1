@@ -36,7 +36,7 @@ Write-Output "$InstalledModulesCounter module(s) installed."
 
 Write-Output "`n`e[36mCreating symbolic links...`e[0m"
 
-$Paths = @(
+$Links = @(
 	# Gitconfig
 	@{
 		Path     = "$HOME\.gitconfig"
@@ -83,12 +83,12 @@ $Paths = @(
 	}
 )
 
-foreach ($Path in $Paths) {
+foreach ($Link in $Links) {
 	# Create parent directory if it doesn't exist
-	$ParentPath = Split-Path -Parent $Path["Path"]
+	$ParentPath = Split-Path -Parent $Link["Path"]
 	New-Item -ItemType Directory -Path $ParentPath -Force > $null
 
-	New-Item -ItemType SymbolicLink @Path -Force # splatting
+	New-Item -ItemType SymbolicLink @Link -Force # splatting
 }
 
 Write-Output "`n`e[32mInstallation complete.`e[0m"
