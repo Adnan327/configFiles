@@ -6,7 +6,6 @@ if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
 	exit 1
 }
 
-
 #######################
 ### Install modules ###
 #######################
@@ -30,7 +29,6 @@ foreach ($Module in $Modules) {
 if ($InstalledModulesCounter -eq 0) {
 	Write-Host "No modules installed."
 }
-
 
 ################
 ### Symlinks ###
@@ -96,6 +94,4 @@ foreach ($Path in $Paths) {
 	New-Item -ItemType SymbolicLink @Path -Force # splatting
 }
 
-
 Write-Host "`nInstallation complete." -ForegroundColor Green
-

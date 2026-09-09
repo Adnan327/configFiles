@@ -5,13 +5,11 @@
 $theme = "robbyrussell"
 oh-my-posh init pwsh --config "$HOME\.omp-themes\$theme.omp.json" | Invoke-Expression
 
-
 #################
 ### Fastfetch ###
 #################
 
 fastfetch
-
 
 ###############
 ### Modules ###
@@ -20,7 +18,6 @@ fastfetch
 Import-Module -Name Terminal-Icons
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 
-
 ###############
 ### Aliases ###
 ###############
@@ -28,4 +25,3 @@ Import-Module -Name Microsoft.WinGet.CommandNotFound
 function notes {
 	Set-Location "$env:USERPROFILE\Meine Ablage\Vaults\Notes"
 }
-
