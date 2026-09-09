@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bash:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Install ShellCheck and shfmt
+        run: |
+          sudo apt update
+          sudo apt install -y shellcheck shfmt
+
+      - name: Check Format
+        run: shfmt -d ./lin-install
+
+      - name: Lint
+        run: shellcheck -s bash ./lin-install
+
+  powershell:
+    runs-on: windows-latest
+
+    steps: 
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Install PSScriptAnalyzer
+        shell: pwsh
+        run: Install-PSResource PSScriptAnalyzer -TrustRepository
+
+      - name: Check Format
+        shell: pwsh
+        run: |
+          $File = "./win-install.ps1"
+          $Original = Get-Content $File -Raw
+          $Formatted = Invoke-Formatter -ScriptDefinition $Original
+
+          if ($Original -ne $Formatted) {
+            throw "$File is not formatted!"
+          }
+
+      - name: Lint
+        shell: pwsh
+        run: Invoke-ScriptAnalyzer -Path "./win-install.ps1"
+
