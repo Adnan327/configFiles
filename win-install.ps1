@@ -15,6 +15,7 @@ $InstalledModulesCounter = 0
 $Modules = @(
 	"Terminal-Icons"
 	"Microsoft.WinGet.CommandNotFound"
+	"PSScriptAnalyzer"
 )
 
 # Installs modules only for the current user
