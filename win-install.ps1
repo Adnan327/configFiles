@@ -9,7 +9,7 @@ if ($PSVersionTable.PSVersion -lt $PwshVersion) {
 ### Install modules ###
 #######################
 
-Write-Host "`nInstalling PowerShell modules..." -ForegroundColor Cyan
+Write-Output "`n`e[36mInstalling PowerShell modules...`e[0m"
 $InstalledModulesCounter = 0
 
 $Modules = @(
@@ -25,7 +25,7 @@ foreach ($Module in $Modules) {
 	}
 }
 
-Write-Host "$InstalledModulesCounter module(s) installed."
+Write-Output "$InstalledModulesCounter module(s) installed."
 
 ################
 ### Symlinks ###
@@ -34,7 +34,7 @@ Write-Host "$InstalledModulesCounter module(s) installed."
 # Path = link
 # Target = original directory/file
 
-Write-Host "`nCreating symbolic links..." -ForegroundColor Cyan
+Write-Output "`n`e[36mCreating symbolic links...`e[0m"
 
 $Paths = @(
 	# Gitconfig
@@ -91,4 +91,4 @@ foreach ($Path in $Paths) {
 	New-Item -ItemType SymbolicLink @Path -Force # splatting
 }
 
-Write-Host "`nInstallation complete." -ForegroundColor Green
+Write-Output "`n`e[32mInstallation complete.`e[0m"
