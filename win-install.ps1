@@ -1,9 +1,8 @@
-# Require PowerShell 7 or newer
-$PwshMajorVersion = 7
+# Require PowerShell 7.4 or newer
+$PwshVersion = [Version]"7.4"
 
-if ($PSVersionTable.PSVersion.Major -lt $PwshMajorVersion) {
-	Write-Host "`nPowerShell 7 or newer is required to run this script." -ForegroundColor Red
-	exit 1
+if ($PSVersionTable.PSVersion -lt $PwshVersion) {
+	throw "`nPowerShell $PwshVersion or newer is required to run this script."
 }
 
 #######################
@@ -26,9 +25,7 @@ foreach ($Module in $Modules) {
 	}
 }
 
-if ($InstalledModulesCounter -eq 0) {
-	Write-Host "No modules installed."
-}
+Write-Host "$InstalledModulesCounter module(s) installed."
 
 ################
 ### Symlinks ###
