@@ -9,6 +9,7 @@
   "editor.snippetSuggestions": "top",
   "editor.inlineSuggest.enabled": false,
   "editor.rulers": [80],
+  "editor.minimap.enabled": false,
   
   "terminal.integrated.fontSize": 14,
   
