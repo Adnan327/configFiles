@@ -11,7 +11,8 @@
   "editor.rulers": [80],
   "editor.minimap.enabled": false,
   
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
   
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Tokyo Night Storm",
